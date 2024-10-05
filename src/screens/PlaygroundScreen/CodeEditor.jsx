@@ -24,15 +24,7 @@ import { python } from '@codemirror/lang-python'
 //configuration
 import { indentUnit } from '@codemirror/language'
 import { EditorState } from '@codemirror/state'
-const codeMirroRef = React.useRef();
-React.useEffect(() => {
-    if (isFullScreen) {
-        const current = codeMirroRef.current.editor.display.wrapper.style.height = ""
-    }
-    else {
-        const current = codeMirroRef.current.editor.display.wrapper.style.height = ""
-    }
-})
+
 const CodeEditor = ({
     currentLanguage,
     currentTheme,
@@ -64,14 +56,12 @@ const CodeEditor = ({
         if (currentTheme === 'vscodeDark') setTheme(vscodeDark);
         if (currentTheme === 'okaidia') setTheme(okaidia);
     }, [currentTheme])
-    const height = isFullScreen ? 'h-[calc(100vh-176px)]' : 'h-[calc(100vh-80px)]'
     return (
         <CodeMirror
             value={currentCode}
-            // height={`${isFullScreen ? 'h-[calc(100vh-176px)]' : 'h-[calc(100vh-80px)]'}`}
-            // height={`${isFullScreen ? '440px' : '480px'}`}
-            style={{ height: height }}
-            ref={codeMirroRef}
+
+            height={isFullScreen ? 'calc(100vh - 100px)' : 'calc(100vh - 176px)'}
+
             theme={theme}
             extensions={[
                 language,
