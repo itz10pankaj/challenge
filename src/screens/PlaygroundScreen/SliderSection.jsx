@@ -56,7 +56,7 @@ const SliderSection = ({ isFullScreen }) => {
                 {Object.entries(folders).map(([folderId, folder]) => (
                     <div key={folderId} className="px-2">
                         <div className="flex items-center flex-wrap justify-between pb-3 pt-3 px-2">
-                            <h3 className="text-xl font-bold flex items-center gap-2">
+                            <h3 className="text-xl font-bold flex items-center gap-2 cursor-pointer">
                                 {!openFolders[folderId] ? (
                                     <ChevronDown onClick={() => handleWrap(folderId)} color='black' />
                                 ) : (

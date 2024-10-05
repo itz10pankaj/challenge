@@ -60,7 +60,7 @@ const CodeEditor = ({
     return (
         <CodeMirror
             value={currentCode}
-            height={`${isFullScreen ? '480px' : '410px'}`}
+            height={`${isFullScreen ? 'h-[calc(100vh-176px)]' : 'h-[calc(100vh-80px)]'}`}
             theme={theme}
             extensions={[
                 language,
