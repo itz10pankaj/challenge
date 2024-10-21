@@ -4,18 +4,20 @@ import logo from "../../assests/logo .png"
 import { useNavigate } from 'react-router-dom';
 import { PlaygroundContext } from "../../context/PlaygroundContext"
 import { ModalContext } from "../../context/ModalContext"
-const RightCompnent = () => {
+const RightCompnent = ({ darkTheme = false }) => {
     const navigate = useNavigate();
     const { openModal } = useContext(ModalContext)
     const { folders, deleteFolder, deleteCard } = useContext(PlaygroundContext)
+
     return (
         <div className="absolute top-0 right-0 w-3/5 p-8 md:relative md:w-full md:p-4">
+            <h1>{darkTheme}</h1>
             <div className="flex items-center flex-wrap justify-between py-3 border-b border-gray-400 mb-4">
                 <h3 className="text-2xl font-normal flex items-center gap-2">
                     My <span className="font-bold">Playground</span>
                 </h3>
                 <div
-                    className="text-base rounded-full text-black flex items-center gap-1 cursor-pointer hover:scale-105"
+                    className={`text-base rounded-full text-black flex items-center gap-1 cursor-pointer hover:scale-105 ${darkTheme ? 'text-white' : 'text-black'}`}
                     onClick={() =>
                         openModal({
                             show: true,
@@ -36,7 +38,7 @@ const RightCompnent = () => {
                         <h3 className="text-xl font-normal flex items-center gap-2">
                             <FolderOpen color='black' fill='yellow' /> {folder?.title}
                         </h3>
-                        <div className="flex items-center gap-2 cursor-pointer">
+                        <div className={`flex items-center gap-2 cursor-pointer`}>
                             <Trash size={20} onClick={() => deleteFolder(folderId)} />
                             <Pencil size={20}
                                 onClick={() =>
@@ -51,7 +53,7 @@ const RightCompnent = () => {
                                 }
                             />
                             <div
-                                className="text-base rounded-full text-black flex items-center gap-1 cursor-pointer hover:scale-105"
+                                className={`text-base rounded-full text-black flex items-center gap-1 cursor-pointer hover:scale-105 ${darkTheme ? 'text-white' : 'text-black'}`}
                                 onClick={() =>
                                     openModal({
                                         show: true,
@@ -72,7 +74,7 @@ const RightCompnent = () => {
                         {Object.entries(folder['playgrounds']).map(([playgroundId, playground]) => (
                             <div
                                 key={playgroundId}
-                                className="p-2 flex w-1/2 items-center justify-between rounded-lg shadow-md shadow-black cursor-pointer transition-transform transform hover:scale-105 hover:shadow-lg hover:shadow-black"
+                                className={`p-2 flex w-1/2 items-center justify-between rounded-lg shadow-md shadow-black cursor-pointer transition-transform transform hover:scale-105 hover:shadow-lg hover:shadow-black ${darkTheme ? 'bg-slate-500' : 'bg-white'}`}
                                 onClick={() => {
                                     navigate(`/playground/${folderId}/${playgroundId}`);
                                 }}

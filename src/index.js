@@ -4,10 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// import { tokens, components } from 'react-ui/themes/light'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    {/* <ThemeProvider tokens={tokens}> */}
     <App />
+    {/* </ThemeProvider> */}
   </React.StrictMode>
 );
 
